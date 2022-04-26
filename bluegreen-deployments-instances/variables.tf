@@ -49,7 +49,7 @@ variable "compute_instance_green_name" {
 
 variable "instance_shape" {
   description = "Instance Shape"
-  default     = "VM.Standard.E4.Flex"
+  default     = "VM.Standard.E3.Flex"
 }
 
 variable "instance_ocpus" {
@@ -83,7 +83,7 @@ variable "Subnet-CIDR" {
 }
 
 variable "repository_name" {
-  default = "oci-devops-deploy-instances-with-blue-green-model"
+  default = "oci-devops-instances-with-blue-green-model"
 }
 
 variable "repository_default_branch" {
@@ -103,7 +103,7 @@ variable "git_repo" {
 }
 
 variable "git_repo_name" {
-  default = "oci_devops_deploy_instance_with_bluegreen"
+  default = "oci-devops-deploy-instances-with-blue-green-model"
 }
 
 
@@ -112,80 +112,180 @@ locals {
 }
 
 
-# variable "build_pipeline_description" {
-#   default = "build pipeline for python application with blue-green deployment strategies"
-# }
+variable "build_pipeline_description" {
+  default = "build pipeline for python application with blue-green deployment strategies"
+}
 
-# variable "build_pipeline_display_name" {
-#   default = "oci_devops_bluegreen_build_pipeline"
-# }
+variable "build_pipeline_display_name" {
+  default = "oci_devops_bluegreen_build_pipeline_with_instances"
+}
+
+variable "devops_artifact_name"{
+  default = "mr_test_bg_artifact_instances"
+}
+
+variable "deploy_artifact_version"{
+  default = "0.0"
+}
+
+variable "build_pipeline_stage_build_pipeline_stage_predecessor_collection_items_id" {
+  default = "id"
+}
+
+variable "build_pipeline_stage_build_pipeline_stage_type" {
+  default = "BUILD"
+}
+
+variable "build_pipeline_stage_build_source_collection_items_connection_type" {
+  default = "DEVOPS_CODE_REPOSITORY"
+}
+
+
+variable "build_pipeline_stage_build_source_collection_items_branch" {
+  default = "main"
+}
+
+variable "build_pipeline_stage_build_source_collection_items_name" {
+  default = "deploy_bluegreen_instances"
+}
+
+variable "build_pipeline_stage_build_spec_file" {
+  default = ""
+}
+
+variable "build_pipeline_stage_display_name" {
+  default = "python_app_build_stage"
+}
+
+variable "build_pipeline_stage_image" {
+  default = "OL7_X86_64_STANDARD_10"
+}
+
+variable "build_pipeline_stage_wait_criteria_wait_duration" {
+  default = "waitDuration"
+}
+
+variable "build_pipeline_stage_wait_criteria_wait_type" {
+  default = "ABSOLUTE_WAIT"
+}
+
+variable "build_pipeline_stage_stage_execution_timeout_in_seconds" {
+  default = 36000
+}
+
+variable "build_pipeline_stage_deliver_artifact_stage_type" {
+  default = "DELIVER_ARTIFACT"
+}
+
+variable "build_pipeline_stage_deliver_artifact_collection_items_artifact_name" {
+  default = "instace_deploy_manifest"
+}
+
+
+variable "deliver_artifact_stage_display_name" {
+  default = "deliver_artifact"
+}
+
+variable "loadbalancer_display_name"{
+  default = "lb_devops_instance_bluegreen"
+}
+
+variable "loadbalancer_listner_name"{
+  default = "devops_lb_listner"
+}
+
+variable "maximum_bandwidth_in_mbps" {
+  default = 10
+}
+
+variable "minimum_bandwidth_in_mbps" {
+  default = 10 
+}
+
+variable "loadbalancer_backend_set_name" {
+  default = "lb_backendset_for_bluegreen"
+}
+
+variable "loadbalancer_backendset_policy" {
+  default = "ROUND_ROBIN"
+}
+
+variable "loadbalancer_backendset_port" {
+  default = 80
+}
+
+variable "loadbalancer_backend_port" {
+  default = 80
+}
+
+variable "deploy_pipeline_description" {
+  default = "Devops CI/CD Pipleline demo for Instances  with bluegreen model"
+}
+
+variable "build_pipeline_stage_deploy_stage_type" {
+  default = "TRIGGER_DEPLOYMENT_PIPELINE"
+}
 
 
 
+variable "deploy_stage_display_name" {
+  default = "deploy_to_instances"
+}
 
-# variable "build_pipeline_stage_build_pipeline_stage_predecessor_collection_items_id" {
-#   default = "id"
-# }
+variable "build_pipeline_stage_is_pass_all_parameters_enabled" {
+  default = true
+}
 
-# variable "build_pipeline_stage_build_pipeline_stage_type" {
-#   default = "BUILD"
-# }
 
-# variable "build_pipeline_stage_deliver_artifact_stage_type" {
-#   default = "DELIVER_ARTIFACT"
-# }
+variable "devops_env_blue_displayname"{
+  default = "env_instance_blue"
+}
 
-# variable "build_pipeline_stage_deploy_stage_type" {
-#   default = "TRIGGER_DEPLOYMENT_PIPELINE"
-# }
+variable "devops_env_blue_query" {
+  default =  "freeformTags.key = 'environment' && freeformTags.value = 'blue'"
+}
 
-# variable "build_pipeline_stage_build_source_collection_items_branch" {
-#   default = "main"
-# }
+variable "devops_env_green_displayname"{
+  default = "env_instance_green"
+}
 
-# variable "build_pipeline_stage_build_source_collection_items_connection_type" {
-#   default = "DEVOPS_CODE_REPOSITORY"
-# }
+variable "devops_env_green_query" {
+  default =  "freeformTags.key = 'environment' && freeformTags.value = 'green'"
+}
 
-# variable "build_pipeline_stage_build_source_collection_items_name" {
-#   default = "deploy_bluegreen_oke"
-# }
 
-# variable "build_pipeline_stage_build_spec_file" {
-#   default = ""
-# }
+variable "bluegreen_deploy_stage_description"{
+  default = "Deploy to instances "
+}
 
-# variable "build_pipeline_stage_deliver_artifact_collection_items_artifact_name" {
-#   default = "output01"
-# }
+variable "bluegreen_deploy_stage_name"{
+  default = "deploy_to_instances"
+}
 
-# variable "build_pipeline_stage_display_name" {
-#   default = "oci_devops_bluegreen_build_pipeline"
-# }
+variable "batch_delay_in_seconds"{
+  default = 5
+}
 
-# variable "deliver_artifact_stage_display_name" {
-#   default = "deliver_artifact"
-# }
+variable "approval_stage_description" {
+  default = "Approval for release"
+}
 
-# variable "deploy_stage_display_name" {
-#   default = "deploy_to_oke"
-# }
+variable "approval_display_name" {
+  default = "approval_stage"
+}
 
-# variable "build_pipeline_stage_image" {
-#   default = "OL7_X86_64_STANDARD_10"
-# }
+variable "approval_count"{
+  default = 1
+}
 
-# variable "build_pipeline_stage_wait_criteria_wait_duration" {
-#   default = "waitDuration"
-# }
+variable "blue_green_stage_shift_description"{
+  default = "switch the traffic between environment"
+}
 
-# variable "build_pipeline_stage_wait_criteria_wait_type" {
-#   default = "ABSOLUTE_WAIT"
-# }
+variable "blue_green_stage_shift_name"{
+  default = "blue_green_traffic_shift"
+}
 
-# variable "build_pipeline_stage_stage_execution_timeout_in_seconds" {
-#   default = 36000
-# }
 
 
 # variable "container_repository_is_public" {
@@ -221,9 +321,7 @@ locals {
 #   default = "KUBERNETES_MANIFEST"
 # }
 
-# variable "deploy_pipeline_description" {
-#   default = "Devops CI/CD Pipleline demo for OKE with bluegreen"
-# }
+
 
 # variable "deploy_artifact_source_type" {
 #   default = "INLINE"
@@ -253,9 +351,6 @@ locals {
 #   default = true
 # }
 
-# variable "build_pipeline_stage_is_pass_all_parameters_enabled" {
-#   default = true
-# }
 
 # variable "deploy_stage_bluegreen_ingress_name" {
 #   default = "sample-oke-bg-app-ing"

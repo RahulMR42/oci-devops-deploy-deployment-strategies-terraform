@@ -10,6 +10,9 @@ resource "oci_core_instance" "compute_instance_blue" {
   display_name        = var.compute_instance_blue_name
   shape               = var.instance_shape
   fault_domain        = "FAULT-DOMAIN-1"
+  freeform_tags       = {
+        "environment" = "blue"
+    }
 
   shape_config {
     ocpus         = var.instance_ocpus
@@ -45,9 +48,12 @@ resource "oci_core_instance" "compute_instance_blue" {
 resource "oci_core_instance" "compute_instance_green" {
   availability_domain = var.availablity_domain_name == "" ? data.oci_identity_availability_domains.ADs.availability_domains[0]["name"] : var.availablity_domain_name
   compartment_id      = var.compartment_ocid
-  display_name        = var.compute_instance_blue_name
+  display_name        = var.compute_instance_green_name
   shape               = var.instance_shape
   fault_domain        = "FAULT-DOMAIN-1"
+  freeform_tags       = {
+        "environment" = "green"
+    }
 
   shape_config {
     ocpus         = var.instance_ocpus
@@ -78,3 +84,4 @@ resource "oci_core_instance" "compute_instance_green" {
   }
   defined_tags = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
+
