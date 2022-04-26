@@ -70,6 +70,7 @@ resource "null_resource" "pushcode" {
 }
 
 
+
 locals {
   encode_user = urlencode(var.oci_username)
   auth_token  = urlencode(var.oci_user_authtoken)
