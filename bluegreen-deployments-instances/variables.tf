@@ -287,4 +287,3 @@ variable "blue_green_stage_shift_name"{
 }
 
 
-
