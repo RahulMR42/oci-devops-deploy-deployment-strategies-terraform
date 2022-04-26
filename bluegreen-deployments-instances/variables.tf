@@ -263,7 +263,7 @@ variable "bluegreen_deploy_stage_name"{
 }
 
 variable "batch_delay_in_seconds"{
-  default = 5
+  default = 10
 }
 
 variable "approval_stage_description" {
