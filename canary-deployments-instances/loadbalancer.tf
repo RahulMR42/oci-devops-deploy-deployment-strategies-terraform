@@ -1,3 +1,6 @@
+# ## Copyright (c) 2022, Oracle and/or its affiliates.
+# ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+
 resource "oci_load_balancer_load_balancer" "test_load_balancer" {
     compartment_id = var.compartment_ocid
     defined_tags               = {}
@@ -41,7 +44,7 @@ resource "oci_load_balancer_backend" "test_backend" {
     backendset_name  = oci_load_balancer_backend_set.test_backend_set.name
     backup           = false
     drain            = false
-    ip_address       = oci_core_instance.compute_instance_blue.private_ip
+    ip_address       = oci_core_instance.compute_instance_prod.private_ip
     load_balancer_id = oci_load_balancer_load_balancer.test_load_balancer.id
     offline          = false
     port             = var.loadbalancer_backend_port
@@ -54,7 +57,7 @@ resource "oci_load_balancer_backend" "test_backend_2" {
     backendset_name  = oci_load_balancer_backend_set.test_backend_set.name
     backup           = false
     drain            = false
-    ip_address       =  oci_core_instance.compute_instance_green.private_ip
+    ip_address       =  oci_core_instance.compute_instance_canary.private_ip
     load_balancer_id = oci_load_balancer_load_balancer.test_load_balancer.id
     offline          = false
     port             = var.loadbalancer_backend_port

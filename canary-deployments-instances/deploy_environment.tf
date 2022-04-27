@@ -4,10 +4,10 @@
 # This Terraform script provisions a compute instance required for OCI DevOps service
 
 
-resource "oci_devops_deploy_environment" "blue_deploy_environment" {
+resource "oci_devops_deploy_environment" "prod_deploy_environment" {
     defined_tags            = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
     deploy_environment_type = "COMPUTE_INSTANCE_GROUP"
-    display_name            = var.devops_env_blue_displayname
+    display_name            = var.devops_env_prod_displayname
     freeform_tags           = {}
     project_id              = oci_devops_project.test_project.id
   
@@ -16,7 +16,7 @@ resource "oci_devops_deploy_environment" "blue_deploy_environment" {
     compute_instance_group_selectors {
         items {
             compute_instance_ids = []
-            query                = var.devops_env_blue_query
+            query                = var.devops_env_prod_query
             region               = var.region
             selector_type        = "INSTANCE_QUERY"
         }
@@ -24,10 +24,10 @@ resource "oci_devops_deploy_environment" "blue_deploy_environment" {
 
 }
 
-resource "oci_devops_deploy_environment" "green_deploy_environment" {
+resource "oci_devops_deploy_environment" "canary_deploy_environment" {
     defined_tags            = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
     deploy_environment_type = "COMPUTE_INSTANCE_GROUP"
-    display_name            = var.devops_env_green_displayname
+    display_name            = var.devops_env_canary_displayname
     freeform_tags           = {}
     project_id              = oci_devops_project.test_project.id
   
@@ -36,7 +36,7 @@ resource "oci_devops_deploy_environment" "green_deploy_environment" {
     compute_instance_group_selectors {
         items {
             compute_instance_ids = []
-            query                = var.devops_env_green_query
+            query                = var.devops_env_canary_query
             region               = var.region
             selector_type        = "INSTANCE_QUERY"
         }

@@ -79,7 +79,7 @@ resource "oci_core_subnet" "subnet" {
   security_list_ids = [oci_core_security_list.sl.id]
 
   provisioner "local-exec" {
-    command = "sleep 5"
+    command = "sleep 10"
   }
 
   defined_tags = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }

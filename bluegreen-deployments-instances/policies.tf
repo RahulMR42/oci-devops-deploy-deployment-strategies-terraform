@@ -50,14 +50,15 @@ resource "oci_identity_policy" "devopspolicy" {
   statements = [
     "Allow group Administrators to manage devops-family in compartment id ${var.compartment_ocid}",
     "Allow group Administrators to manage all-artifacts in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to manage all-resources in compartment id ${var.compartment_ocid}",
-    "Allow group ${oci_identity_group.devops.name} to use instance-agent-command-execution-family in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${oci_identity_dynamic_group.runcmddynamicgroup.name} to use instance-agent-command-execution-family in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${oci_identity_dynamic_group.runcmddynamicgroup.name} to manage buckets in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${oci_identity_dynamic_group.runcmddynamicgroup.name} to manage objects in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${oci_identity_dynamic_group.runcmddynamicgroup.name} to manage generic-artifacts in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${oci_identity_dynamic_group.runcmddynamicgroup.name} to read all-artifacts in compartment id ${var.compartment_ocid}",
-
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to manage repos in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to read secret-family in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to manage devops-family in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to manage generic-artifacts in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to use ons-topics in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to use instance-agent-command-execution-family in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to read generic-artifacts in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.devopsgroup1.name} to read all-artifacts in compartment id ${var.compartment_ocid}",
+     
   ]
 }
 

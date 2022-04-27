@@ -1,17 +1,17 @@
-## Copyright (c) 2021, Oracle and/or its affiliates.
-## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+# ## Copyright (c) 2021, Oracle and/or its affiliates.
+# ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
-# This Terraform script provisions a compute instance required for OCI DevOps service
+# # This Terraform script provisions a compute instance required for OCI DevOps service
 
 
-resource "oci_core_instance" "compute_instance_blue" {
+resource "oci_core_instance" "compute_instance_prod" {
   availability_domain = var.availablity_domain_name == "" ? data.oci_identity_availability_domains.ADs.availability_domains[0]["name"] : var.availablity_domain_name
   compartment_id      = var.compartment_ocid
-  display_name        = var.compute_instance_blue_name
+  display_name        = var.compute_instance_prod_name
   shape               = var.instance_shape
   fault_domain        = "FAULT-DOMAIN-1"
   freeform_tags       = {
-        "environment" = "blue"
+        "environment" = "prod"
     }
 
   shape_config {
@@ -45,14 +45,14 @@ resource "oci_core_instance" "compute_instance_blue" {
 }
 
 
-resource "oci_core_instance" "compute_instance_green" {
+resource "oci_core_instance" "compute_instance_canary" {
   availability_domain = var.availablity_domain_name == "" ? data.oci_identity_availability_domains.ADs.availability_domains[0]["name"] : var.availablity_domain_name
   compartment_id      = var.compartment_ocid
-  display_name        = var.compute_instance_green_name
+  display_name        = var.compute_instance_canary_name
   shape               = var.instance_shape
   fault_domain        = "FAULT-DOMAIN-1"
   freeform_tags       = {
-        "environment" = "green"
+        "environment" = "canary"
     }
 
   shape_config {

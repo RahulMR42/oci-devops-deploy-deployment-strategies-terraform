@@ -1,5 +1,5 @@
-# ## Copyright (c) 2022, Oracle and/or its affiliates.
-# ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+# # ## Copyright (c) 2022, Oracle and/or its affiliates.
+# # ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 variable "tenancy_ocid" {}
 variable "compartment_ocid" {}
@@ -39,12 +39,12 @@ variable "project_description" {
 }
 
 
-variable "compute_instance_blue_name" {
-  default = "devops-instance-blue"
+variable "compute_instance_prod_name" {
+  default = "devops-instance-prod"
 }
 
-variable "compute_instance_green_name" {
-  default = "devops-instance-green"
+variable "compute_instance_canary_name" {
+  default = "devops-instance-canary"
 }
 
 variable "instance_shape" {
@@ -83,7 +83,7 @@ variable "Subnet-CIDR" {
 }
 
 variable "repository_name" {
-  default = "oci-devops-instances-with-blue-green-model"
+  default = "oci-devops-instances-with-canary-model"
 }
 
 variable "repository_default_branch" {
@@ -91,7 +91,7 @@ variable "repository_default_branch" {
 }
 
 variable "repository_description" {
-  default = "OCI Devops blue greeninstance sample application"
+  default = "OCI Devops canary instance sample application"
 }
 
 variable "repository_repository_type" {
@@ -99,11 +99,11 @@ variable "repository_repository_type" {
 }
 
 variable "git_repo" {
-  default = "https://github.com/RahulMR42/oci-devops-deploy-instances-with-blue-green-model.git"
+  default = "https://github.com/RahulMR42/oci-devops-deploy-instances-with-canary-model.git"
 }
 
 variable "git_repo_name" {
-  default = "oci-devops-deploy-instances-with-blue-green-model"
+  default = "oci-devops-deploy-instances-with-canary-model"
 }
 
 
@@ -113,15 +113,15 @@ locals {
 
 
 variable "build_pipeline_description" {
-  default = "build pipeline for python application with blue-green deployment strategies"
+  default = "build pipeline for python application with canary deployment strategies"
 }
 
 variable "build_pipeline_display_name" {
-  default = "oci_devops_bluegreen_build_pipeline_with_instances"
+  default = "oci_devops_canary_build_pipeline_with_instances"
 }
 
 variable "devops_artifact_name"{
-  default = "mr_test_bg_artifact_instances"
+  default = "test_canary_artifact_instances"
 }
 
 variable "deploy_artifact_version"{
@@ -146,7 +146,7 @@ variable "build_pipeline_stage_build_source_collection_items_branch" {
 }
 
 variable "build_pipeline_stage_build_source_collection_items_name" {
-  default = "deploy_bluegreen_instances"
+  default = "deploy_canary_instances"
 }
 
 variable "build_pipeline_stage_build_spec_file" {
@@ -187,7 +187,7 @@ variable "deliver_artifact_stage_display_name" {
 }
 
 variable "loadbalancer_display_name"{
-  default = "lb_devops_instance_bluegreen"
+  default = "lb_devops_instance_canary"
 }
 
 variable "loadbalancer_listner_name"{
@@ -203,7 +203,7 @@ variable "minimum_bandwidth_in_mbps" {
 }
 
 variable "loadbalancer_backend_set_name" {
-  default = "lb_backendset_for_bluegreen"
+  default = "lb_backendset_for_canary"
 }
 
 variable "loadbalancer_backendset_policy" {
@@ -219,7 +219,7 @@ variable "loadbalancer_backend_port" {
 }
 
 variable "deploy_pipeline_description" {
-  default = "Devops CI/CD Pipleline demo for Instances  with bluegreen model"
+  default = "Devops CI/CD Pipleline demo for Instances  with canary model"
 }
 
 variable "build_pipeline_stage_deploy_stage_type" {
@@ -236,34 +236,46 @@ variable "build_pipeline_stage_is_pass_all_parameters_enabled" {
   default = true
 }
 
-
-variable "devops_env_blue_displayname"{
-  default = "env_instance_blue"
+variable "devops_env_canary_displayname"{
+  default = "env_instance_canary"
 }
 
-variable "devops_env_blue_query" {
-  default =  "freeformTags.key = 'environment' && freeformTags.value = 'blue'"
+variable "devops_env_canary_query" {
+  default =  "freeformTags.key = 'environment' && freeformTags.value = 'canary'"
 }
 
-variable "devops_env_green_displayname"{
-  default = "env_instance_green"
+variable "devops_env_prod_displayname"{
+  default = "env_instance_prod"
 }
 
-variable "devops_env_green_query" {
-  default =  "freeformTags.key = 'environment' && freeformTags.value = 'green'"
+variable "devops_env_prod_query" {
+  default =  "freeformTags.key = 'environment' && freeformTags.value = 'prod'"
 }
 
 
-variable "bluegreen_deploy_stage_description"{
+variable "canary_deploy_stage_description"{
   default = "Deploy to instances "
 }
 
-variable "bluegreen_deploy_stage_name"{
+variable "canary_deploy_stage_name"{
   default = "deploy_to_instances"
 }
 
 variable "batch_delay_in_seconds"{
   default = 5
+}
+
+
+variable "canary_traffic_shift_description"{
+  default = "Canary traffic shift"
+}
+
+variable "canary_traffic_shift_name"{
+  default = "canary_traffic_shift"
+}
+
+variable "canary_traffic_shift_ramp_limit"{
+  default = 25 
 }
 
 variable "approval_stage_description" {
@@ -278,12 +290,11 @@ variable "approval_count"{
   default = 1
 }
 
-variable "blue_green_stage_shift_description"{
-  default = "switch the traffic between environment"
+variable "canary_production_description"{
+  default = "Production Release"
 }
 
-variable "blue_green_stage_shift_name"{
-  default = "blue_green_traffic_shift"
+variable "canary_production_name"{
+  default = "production_release"
 }
-
 
