@@ -40,11 +40,11 @@ variable "project_description" {
 
 
 variable "compute_instance_blue_name" {
-  default = "devops-instance-blue"
+  default = "blue-devops-instance"
 }
 
 variable "compute_instance_green_name" {
-  default = "devops-instance-green"
+  default = "green-devops-instance"
 }
 
 variable "instance_shape" {

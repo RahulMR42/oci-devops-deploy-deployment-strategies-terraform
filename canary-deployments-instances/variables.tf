@@ -40,11 +40,11 @@ variable "project_description" {
 
 
 variable "compute_instance_prod_name" {
-  default = "devops-instance-prod"
+  default = "prod-devops-instance"
 }
 
 variable "compute_instance_canary_name" {
-  default = "devops-instance-canary"
+  default = "canary-devops-instance"
 }
 
 variable "instance_shape" {
