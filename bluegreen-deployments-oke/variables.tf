@@ -55,7 +55,7 @@ variable "git_repo" {
 }
 
 variable "git_repo_name" {
-  default = "oci_devops_deploy_with_bluegreen_oke"
+  default = "oci-devops-deploy-oke-with-blue-green-model"
 }
 
 variable "build_pipeline_stage_build_pipeline_stage_predecessor_collection_items_id" {
