@@ -4,7 +4,7 @@
 resource "oci_artifacts_container_repository" "test_container_repository" {
   #Required
   compartment_id = var.compartment_ocid
-  display_name   = "node-express-getting-starter-${random_id.tag.hex}"
+  display_name   = "${var.app_name}_containerrepo_${random_id.tag.hex}"
   #Optional
   is_public = var.container_repository_is_public
 }

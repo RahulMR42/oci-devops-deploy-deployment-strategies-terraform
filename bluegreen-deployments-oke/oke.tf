@@ -80,26 +80,22 @@ resource "null_resource" "oke_nginix_setup" {
 
    provisioner "local-exec" {
 
-      command = "echo '(1) Kubeconfig setup: '; export KUBECONFIG=${path.module}/generated/kubeconfig"
+      command = "echo '(1) Create namespace: '; export KUBECONFIG=${path.module}/generated/kubeconfig;kubectl create ns ${var.deploy_stage_green_namespace};kubectl create ns  ${var.deploy_stage_blue_namespace}"
     
   }
 
   provisioner "local-exec" {
 
-      command = "echo '(2) Installing nginx: '; kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-${var.ingress_version}/deploy/static/provider/cloud/deploy.yaml"
+      command = "echo '(2) Installing nginx: ';export KUBECONFIG=${path.module}/generated/kubeconfig;kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-${var.ingress_version}/deploy/static/provider/cloud/deploy.yaml"
     
   }
 
    provisioner "local-exec" {
 
-    command = "echo '(3) Applying nginx service: '; kubectl apply -f ${path.module}/manifest/cloud-generic.yaml"
+    command = "echo '(3) Applying nginx service: ';export KUBECONFIG=${path.module}/generated/kubeconfig;kubectl apply -f ${path.module}/manifest/cloud-generic.yaml"
     
   }
 
-     provisioner "local-exec" {
-
-    command = "echo '(4) Creating new namespaces: '; kubectl create ns ${var.deploy_stage_green_namespace};kubectl create ns  ${var.deploy_stage_blue_namespace};"
     
-  }
 }
 

@@ -91,7 +91,7 @@ variable "build_pipeline_stage_build_spec_file" {
 }
 
 variable "build_pipeline_stage_deliver_artifact_collection_items_artifact_name" {
-  default = "output01"
+  default = "oke_app_base"
 }
 
 variable "build_pipeline_stage_display_name" {
