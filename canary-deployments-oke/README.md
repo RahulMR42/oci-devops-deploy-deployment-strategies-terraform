@@ -1,5 +1,4 @@
 OCI deployment over OCI OKE  using canary  deployment strategies.
-
 =======
 
 - create a terraform.tfvars file based on the sample below.

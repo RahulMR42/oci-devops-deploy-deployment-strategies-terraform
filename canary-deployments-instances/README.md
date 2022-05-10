@@ -1,5 +1,4 @@
 OCI deployment over OCI instances using canary.
-
 =======
 
 - create a terraform.tfvars file based on the sample below.

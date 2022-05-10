@@ -1,5 +1,4 @@
 OCI deployment over OCI instances using blue green strategies.
-
 =======
 
 - create a terraform.tfvars file based on the sample below.
