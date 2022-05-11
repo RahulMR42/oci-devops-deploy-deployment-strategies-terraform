@@ -242,7 +242,7 @@ variable "devops_env_blue_displayname"{
 }
 
 variable "devops_env_blue_query" {
-  default =  "freeformTags.key = 'environment' && freeformTags.value = 'blue'"
+  default =  "freeformTags.key = 'environment' && freeformTags.value = 'blue'&& LifecycleState = 'Running'"
 }
 
 variable "devops_env_green_displayname"{
@@ -250,7 +250,7 @@ variable "devops_env_green_displayname"{
 }
 
 variable "devops_env_green_query" {
-  default =  "freeformTags.key = 'environment' && freeformTags.value = 'green'"
+  default =  "freeformTags.key = 'environment' && freeformTags.value = 'green'&& LifecycleState = 'Running'"
 }
 
 
