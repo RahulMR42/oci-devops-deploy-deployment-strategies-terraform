@@ -49,7 +49,7 @@ variable "compute_instance_green_name" {
 
 variable "instance_shape" {
   description = "Instance Shape"
-  default     = "VM.Standard.E4.Flex"
+  default     = "VM.Standard.E3.Flex"
 }
 
 variable "instance_ocpus" {
@@ -67,7 +67,7 @@ variable "instance_os" {
 
 variable "linux_os_version" {
   description = "Operating system version for all Linux instances"
-  default     = "8.0"
+  default     = "7.9"
 }
 
 variable "availablity_domain_name" {
