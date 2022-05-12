@@ -10,15 +10,12 @@ resource "oci_devops_deploy_environment" "prod_deploy_environment" {
     display_name            = var.devops_env_prod_displayname
     freeform_tags           = {}
     project_id              = oci_devops_project.test_project.id
-  
-
-
     compute_instance_group_selectors {
         items {
-            compute_instance_ids = []
-            query                = var.devops_env_prod_query
-            region               = var.region
-            selector_type        = "INSTANCE_QUERY"
+            compute_instance_ids = [
+                oci_core_instance.compute_instance_prod.id
+            ]
+            selector_type        = "INSTANCE_IDS"
         }
     }
 
@@ -30,16 +27,15 @@ resource "oci_devops_deploy_environment" "canary_deploy_environment" {
     display_name            = var.devops_env_canary_displayname
     freeform_tags           = {}
     project_id              = oci_devops_project.test_project.id
-  
-
-
     compute_instance_group_selectors {
         items {
-            compute_instance_ids = []
-            query                = var.devops_env_canary_query
-            region               = var.region
-            selector_type        = "INSTANCE_QUERY"
+            compute_instance_ids = [
+                oci_core_instance.compute_instance_canary.id
+            ]
+            selector_type        = "INSTANCE_IDS"
         }
     }
 
 }
+
+
