@@ -240,16 +240,9 @@ variable "devops_env_canary_displayname"{
   default = "env_instance_canary"
 }
 
-variable "devops_env_canary_query" {
-  default =  "freeformTags.key = 'environment' && freeformTags.value = 'canary'&& LifecycleState = 'Running'"
-}
 
 variable "devops_env_prod_displayname"{
   default = "env_instance_prod"
-}
-
-variable "devops_env_prod_query" {
-  default =  "freeformTags.key = 'environment' && freeformTags.value = 'prod'&& LifecycleState = 'Running'"
 }
 
 
